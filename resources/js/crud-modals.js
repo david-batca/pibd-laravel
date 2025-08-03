@@ -36,14 +36,6 @@ export function initCreateForm({ entity, apiUrl, onAdd }) {
 
 window.initCreateForm = initCreateForm;
 
-export function openEditForm(entity, id) {
-    document.getElementById(`${entity}_edit_form_${id}`).action =
-        window.routes.artistUpdate.replace(":id", id);
-    document.getElementById(`${entity}_edit_modal_${id}`).checked = true;
-}
-
-window.openEditForm = openEditForm;
-
 export function initEditForm({ id, entity, apiUrl, onUpdate }) {
     const modal = document.getElementById(`${entity}_edit_modal_${id}`);
     const form = document.getElementById(`${entity}_edit_form_${id}`);

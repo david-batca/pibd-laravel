@@ -1,8 +1,8 @@
 @props(['id', 'name'])
 
-<button class="btn btn-success btn-sm btn-circle" type="button" onclick="openEditForm('artist', {{ $id }})">
+<label class="btn btn-success btn-sm btn-circle" for="artist_edit_modal_{{ $id }}">
   <i class="mdi mdi-pencil text-lg"></i>
-</button>
+</label>
 
 <input type="checkbox" id="artist_edit_modal_{{ $id }}" class="modal-toggle" />
 <div class="modal">
