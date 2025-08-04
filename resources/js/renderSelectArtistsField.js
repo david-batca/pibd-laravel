@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     renderTags();
                 }
             );
-
             tagsWrapper.insertBefore(tpl, input);
         });
     }

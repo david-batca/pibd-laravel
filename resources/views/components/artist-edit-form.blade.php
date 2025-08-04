@@ -22,22 +22,3 @@
     </form>
   </div>
 </div>
-<<<<<<< HEAD=======@push('scripts') <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const id = {{ $id }};
-
-    initEditForm({
-      id: id,
-      entity: 'artist',
-      apiUrl: window.routes.artistUpdate.replace(':id', id),
-      onUpdate: (artist) => {
-        const tableRow = document.getElementById(`artist_row_${artist.id}`);
-        tableRow.children[1].textContent = artist.name;
-
-        document.getElementById(`artist_edit_modal_${artist.id}`).checked = false;
-      }
-    })
-  })
-</script>
-@endpush
->>>>>>> fca9b6929bc8d803cfeb31b851e48ced92f74bc5
