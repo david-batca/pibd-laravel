@@ -1,2 +1,4 @@
 import "./bootstrap";
-import "./crud-modals";
+import "./crudForms";
+import "./renderSelectArtistsField";
+import "./renderSelectSongsField";

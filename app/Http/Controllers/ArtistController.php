@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artist;
+use App\Models\Song;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -26,7 +27,9 @@ class ArtistController extends Controller
 
     $artists->setCollection($transformed);
 
-    return view('artists.index', ['artists' => $artists]);
+    $songs = Song::all(['id', 'name']);
+
+    return view('artists.index', ['artists' => $artists, 'songs' => $songs]);
   }
 
   public function create(Request $request)
@@ -56,7 +59,7 @@ class ArtistController extends Controller
 
     $artist->delete();
 
-    return response()->json(['stattus' => 'success'], 200);
+    return response()->json(['status' => 'success'], 200);
   }
 
   public function find($id)

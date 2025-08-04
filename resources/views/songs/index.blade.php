@@ -2,28 +2,28 @@
 
 @section('content')
   <div class="flex items-center justify-between p-5 bg-slate-800 rounded-2xl mb-10">
-    <h1 class="text-2xl">Artisti</h1>
+    <h1 class="text-2xl">Melodii</h1>
 
-    <x-artist-create-form :songs="$songs" />
+    <x-song-create-form :artists="$artists" />
   </div>
 
   <div class="overflow-x-auto p-5 bg-slate-800 rounded-2xl mb-10">
     <table class="table">
       <thead>
         <tr>
-          <th></th>
+          <th>Id</th>
           <th>Nume</th>
-          <th>Melodii</th>
+          <th>Artisti</th>
           <th></th>
         </tr>
       </thead>
-      <tbody id="artists_table">
-        @foreach ($artists as $index => $artist)
-          @include('artists.partials._row', ['artist' => $artist, 'index' => $index + 1])
+      <tbody id="songs_table">
+        @foreach ($songs as $song)
+          @include('songs.partials._row', ['song' => $song])
         @endforeach
       </tbody>
     </table>
   </div>
 
-  {{ $artists->links() }}
+  {{ $songs->links() }}
 @endsection

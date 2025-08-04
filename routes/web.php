@@ -16,3 +16,7 @@ Route::patch('/artists/{id}', [ArtistController::class, 'update'])->name('artist
 
 
 Route::get('/songs', [SongController::class, 'index'])->name('songs.index');
+Route::post('/songs', [SongController::class, 'create'])->name('song.create');
+Route::delete('/songs/{id}', [SongController::class, 'delete'])->name('song.delete');
+Route::get('/songs/{id}', [SongController::class, 'find'])->name('song.find');
+Route::patch('/songs/{id}', [SongController::class, 'update'])->name('song.update');

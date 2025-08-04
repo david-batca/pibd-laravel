@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bazar de muzică</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -13,7 +13,9 @@
         artistDelete: '{{ route('artist.delete', ':id') }}',
         artistFind: '{{ route('artist.find', ':id') }}',
         artistUpdate: '{{ route('artist.update', ':id') }}',
-        artistDelete: '{{ route('artist.delete', ':id') }}',
+        songDelete: '{{ route('song.delete', ':id') }}',
+        songFind: '{{ route('song.find', ':id') }}',
+        songUpdate: '{{ route('song.update', ':id') }}',
       };
     </script>
   </head>
@@ -25,54 +27,55 @@
           <i class="mdi mdi-menu text-2xl text-black"></i>
         </button>
       </div>
-      <div id="header_title" class="text-black text-2xl">Bazar de muzica</div>
+      <div id="header_title" class="text-black text-2xl">Bazar de muzică</div>
     </header>
 
     <main class="flex flex-1 overflow-hidden">
-      <aside id="sidebar" class="menu w-80 px-5 bg-error h-full sticky top-20 overflow-auto">
+      <aside id="sidebar" class="menu w-80 px-5 bg-error sticky top-20 overflow-auto">
         <ul class="text-black">
           <li class="mb-4">
-            <a href="{{ route('home') }}" @class(['text-xl', 'menu-active' => request()->routeIs('home')])>Acasa</a>
+            <a href="{{ route('home') }}" @class(['text-xl', 'menu-active' => request()->routeIs('home')])>
+              Acasă
+            </a>
           </li>
           <li class="mb-4">
-            <a href="{{ route('artists.index') }}" @class(['text-xl', 'menu-active' => request()->routeIs('artists.*')])>Artisti</a>
+            <a href="{{ route('artists.index') }}" @class(['text-xl', 'menu-active' => request()->routeIs('artists.*')])>
+              Artiști
+            </a>
           </li>
           <li>
-            <a href="{{ route('songs.index') }}" @class(['text-xl', 'menu-active' => request()->routeIs('songs.*')])>Melodii</a>
+            <a href="{{ route('songs.index') }}" @class(['text-xl', 'menu-active' => request()->routeIs('songs.*')])>
+              Melodii
+            </a>
           </li>
         </ul>
       </aside>
 
-      <section class="flex-1 overflow-auto bg-error h-full">
-        <div id="main_content" class="bg-base-100 h-full rounded-tl-2xl p-4">
+      <section class="flex w-full overflow-auto bg-error">
+        <div id="main_content" class="flex flex-col w-full bg-base-100 rounded-tl-2xl p-4">
           @yield('content')
         </div>
       </section>
     </main>
 
     @stack('scripts')
+
+    <script>
+      let showMenu = true;
+      const sidebar = document.getElementById('sidebar');
+      const mainContent = document.getElementById('main_content');
+      const toggleButton = document.getElementById('toggle_button');
+      const headerTitle = document.getElementById('header_title');
+
+      function toggleSidebar() {
+        showMenu = !showMenu;
+        sidebar.classList.toggle('w-80', showMenu);
+        sidebar.classList.toggle('hidden', !showMenu);
+        mainContent.classList.toggle('rounded-tl-2xl', showMenu);
+        toggleButton.classList.toggle('w-80', showMenu);
+        headerTitle.classList.toggle('ml-5', !showMenu);
+      }
+    </script>
   </body>
-
-  <script>
-    let showMenu = true;
-
-    const sidebar = document.getElementById('sidebar');
-    const mainContent = document.getElementById('main_content');
-    const toggleButton = document.getElementById('toggle_button');
-    const headerTitle = document.getElementById('header_title');
-
-    const toggleSidebar = () => {
-      showMenu = !showMenu;
-
-      sidebar.classList.toggle('w-80', showMenu);
-      sidebar.classList.toggle('hidden', !showMenu);
-
-      mainContent.classList.toggle('rounded-tl-2xl', showMenu);
-
-      toggleButton.classList.toggle('w-80', showMenu);
-
-      headerTitle.classList.toggle('ml-5', !showMenu);
-    }
-  </script>
 
 </html>
