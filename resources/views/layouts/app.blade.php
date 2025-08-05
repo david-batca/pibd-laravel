@@ -42,7 +42,7 @@
       </aside>
 
       <section class="flex w-full overflow-auto bg-error">
-        <div id="main_content" class="flex flex-col w-full bg-base-100 rounded-tl-2xl p-4">
+        <div id="main_content" class="flex flex-col w-full relative bg-base-100 rounded-tl-2xl p-4">
           @yield('content')
         </div>
       </section>

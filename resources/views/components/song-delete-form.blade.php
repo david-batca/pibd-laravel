@@ -1,6 +1,6 @@
 @props(['id'])
 
-<form id="song_delete_form_{{ $id }}" action="{{ route('song.delete', $id) }}" method="POST">
+<form id="song-delete-form-{{ $id }}" action="{{ route('song.delete', $id) }}" method="POST">
   @csrf
   @method('DELETE')
 

@@ -19,6 +19,7 @@ class SongController extends Controller
         'name' => $song->name,
         'artists' => $song->artists->map(function ($artist) {
           return [
+            'id' => $artist->id,
             'name' => $artist->name
           ];
         })
@@ -42,7 +43,9 @@ class SongController extends Controller
       'name' => $data['name']
     ]);
 
-    return redirect()->route('songs.index', $request->query());
+    $song->artists()->sync($request->artist_ids);
+
+    return redirect()->route('songs.index')->with('success', 'Melodia a fost adaugata cu succes');
   }
 
   public function delete($id, Request $request)
@@ -51,7 +54,7 @@ class SongController extends Controller
 
     $song->delete();
 
-    return redirect()->route('songs.index', $request->query());
+    return redirect()->route('songs.index')->with('success', 'Melodia a fost stearsa cu succes');
   }
 
   public function update($id, Request $request)
@@ -62,10 +65,8 @@ class SongController extends Controller
 
     $song = Song::findOrFail($id);
     $song->update(['name' => $data['name']]);
+    $song->artists()->sync($request->artist_ids);
 
-    return response()->json([
-      'id' => $song->id,
-      'name' => $song->name
-    ], 200);
+    return redirect()->route('songs.index')->with('success', 'Melodia a fost actualizata cu succes');
   }
 }

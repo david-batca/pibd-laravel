@@ -1,4 +1,4 @@
 import "./bootstrap";
-// import "./renderSelectArtistsField";
+import "./renderSelectArtistsField";
 import "./renderSelectSongsField";
-import "./renderSelectMultipleField";
+import "./renderFlashMessage";
