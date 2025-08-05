@@ -11,7 +11,7 @@ class SongController extends Controller
 {
   public function index()
   {
-    $songs = Song::with('artists:id,name')->paginate(5);
+    $songs = Song::with('artists:id,name')->paginate(10);
 
     $transformed = $songs->getCollection()->map(function ($song) {
       return [
